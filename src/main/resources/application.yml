@@ -1,0 +1,9 @@
+logging:
+  config: classpath:logback.xml
+
+taskExecutor:
+  corePoolSize: 10
+  maxPoolSize: 20
+  keepAliveSeconds: 3000
+  queueCapacity: 200
+  threadNamePrefix: TASK_EXECUTOR

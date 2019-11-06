@@ -7,7 +7,7 @@ import org.springframework.stereotype.Component;
  * Created by luzongwei on 2018/8/16 0016.
  */
 @Component
-public class HelloWorldConstant {
+public class PlayGroundConstant {
 
     @Value("#{systemProperties['user.language']}")
     private String language;

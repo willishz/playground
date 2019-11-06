@@ -1,6 +1,6 @@
 package org.willishz.playground.grammar;
 
-import org.willishz.vo.User;
+import org.willishz.playground.vo.User;
 
 import java.io.IOException;
 import java.nio.charset.Charset;
@@ -27,7 +27,7 @@ public class LambdaTest {
 
         Stream<String> stream = Stream.of("Java 8 ", "Lambdas ", "In ", "Action"); // 由值创建流
         try {
-            Stream<String> lines = Files.lines(Paths.get("src/main/resources", "application.properties"), Charset.defaultCharset()); // 由文件创建流
+            Stream<String> lines = Files.lines(Paths.get("src/main/resources", "application.yml"), Charset.defaultCharset()); // 由文件创建流
             lines.forEach(n -> System.out.println(n));
         } catch (IOException e) {
             e.printStackTrace();

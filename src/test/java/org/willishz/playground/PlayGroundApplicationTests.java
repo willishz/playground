@@ -1,14 +1,14 @@
-package org.willishz.playground.helloworld;
+package org.willishz.playground;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
-import org.willishz.HelloworldApplication;
-import org.willishz.async.AsyncDemo;
-import org.willishz.async.AsyncExceptionDemo;
-import org.willishz.constant.HelloWorldConstant;
+import org.willishz.playground.PlayGroundApplication;
+import org.willishz.playground.async.AsyncDemo;
+import org.willishz.playground.async.AsyncExceptionDemo;
+import org.willishz.playground.constant.PlayGroundConstant;
 
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Future;
@@ -18,8 +18,8 @@ import java.util.concurrent.Future;
  *
  */
 @RunWith(SpringRunner.class)
-@SpringBootTest(classes = HelloworldApplication.class)
-public class HelloworldApplicationTests {
+@SpringBootTest(classes = PlayGroundApplication.class)
+public class PlayGroundApplicationTests {
 
     @Autowired
     private AsyncExceptionDemo asyncExceptionDemo;
@@ -28,11 +28,11 @@ public class HelloworldApplicationTests {
     private AsyncDemo asyncDemo;
 
     @Autowired
-    private HelloWorldConstant helloWorldConstant;
+    private PlayGroundConstant playGroundConstant;
 
     @Test
     public void contextLoads() throws InterruptedException, ExecutionException {
-        System.out.println(helloWorldConstant.getLanguage());
+        System.out.println(playGroundConstant.getLanguage());
 
         asyncDemo.asyncInvokeSimplest();
         asyncDemo.asyncInvokeWithParameter("test");
