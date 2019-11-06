@@ -5,7 +5,7 @@ import java.util.Random;
 import java.util.concurrent.*;
 
 /**
- * Created by luzongwei on 2018/8/16 0016.
+ * 用Future创建线程
  */
 public class FutureTest {
 

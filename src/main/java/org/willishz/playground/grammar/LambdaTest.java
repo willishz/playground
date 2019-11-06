@@ -12,6 +12,9 @@ import java.util.concurrent.ThreadLocalRandom;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
+/**
+ * lambda表达式测试
+ */
 public class LambdaTest {
 
     public static void main(String[] args) throws ExecutionException, InterruptedException {

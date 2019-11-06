@@ -8,6 +8,9 @@ import lombok.ToString;
 import java.io.Serializable;
 import java.util.Date;
 
+/**
+ * user的vo类
+ */
 @Data
 @NoArgsConstructor
 @EqualsAndHashCode

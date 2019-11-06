@@ -5,7 +5,7 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
 
 /**
- * Created by luzongwei on 2019/1/31 0031.
+ * 测试本地方法内存溢出
  */
 public class TestNativeOutOfMemoryError {
 

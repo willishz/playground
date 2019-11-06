@@ -8,6 +8,9 @@ import org.springframework.stereotype.Component;
 
 import java.util.concurrent.Future;
 
+/**
+ * spring异步调用
+ */
 @Component
 public class AsyncDemo {
     private static final Logger log = LoggerFactory.getLogger(AsyncDemo.class);

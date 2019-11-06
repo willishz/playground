@@ -13,7 +13,6 @@ import java.util.concurrent.Executor;
 /**
  * 通过实现AsyncConfigurer自定义异常线程池，包含异常处理
  *
- * @author hry
  */
 @Service
 public class MyAsyncConfigurer implements AsyncConfigurer {

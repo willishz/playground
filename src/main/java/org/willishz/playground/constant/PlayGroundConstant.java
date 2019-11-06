@@ -4,7 +4,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 /**
- * Created by luzongwei on 2018/8/16 0016.
+ * 常量类
  */
 @Component
 public class PlayGroundConstant {

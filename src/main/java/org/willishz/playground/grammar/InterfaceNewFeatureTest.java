@@ -4,6 +4,9 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.function.Supplier;
 
+/**
+ * 函数式接口
+ */
 public class InterfaceNewFeatureTest {
 
     public static void main(String[] args) {
