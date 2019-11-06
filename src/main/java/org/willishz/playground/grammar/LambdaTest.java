@@ -78,9 +78,9 @@ public class LambdaTest {
         if (rawUserList == null || rawUserList.isEmpty()) {
             return result;
         }
-        for (User User : rawUserList) {
-            if (predicate.test(User)) {
-                result.add(User);
+        for (User user : rawUserList) {
+            if (predicate.test(user)) {
+                result.add(user);
             }
         }
         return result;
