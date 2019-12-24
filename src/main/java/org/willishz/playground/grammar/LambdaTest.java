@@ -1,5 +1,6 @@
 package org.willishz.playground.grammar;
 
+import org.junit.Test;
 import org.willishz.playground.vo.User;
 
 import java.io.IOException;
@@ -17,7 +18,8 @@ import java.util.stream.Stream;
  */
 public class LambdaTest {
 
-    public static void main(String[] args) throws ExecutionException, InterruptedException {
+    @Test
+    public void test() throws ExecutionException, InterruptedException {
         List<Integer> integers = Arrays.asList(4, 5, 6, 1, 2, 3, 7, 8, 8, 9, 10);
         List<Integer> evens = integers.stream().filter(i -> i % 2 == 0).collect(Collectors.toList()); //过滤出偶数列表 [4,6,8,8,10]<br>
         List<Integer> sortIntegers = integers.stream().sorted().limit(5).collect(Collectors.toList());//排序并且提取出前5个元素 [1,2,3,4,5]

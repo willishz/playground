@@ -1,5 +1,7 @@
 package org.willishz.playground.grammar;
 
+import org.junit.Test;
+
 import java.time.Clock;
 import java.time.Duration;
 import java.time.LocalDateTime;
@@ -9,7 +11,8 @@ import java.time.LocalDateTime;
  */
 public class DateTimeTest {
 
-    public static void main(String[] args) {
+    @Test
+    public void test() {
         LocalDateTime ldtm = LocalDateTime.of(2019, 8, 1, 0, 0, 0);
         System.out.println(ldtm);
         System.out.println(ldtm.withDayOfMonth(10));
@@ -20,6 +23,5 @@ public class DateTimeTest {
         final Clock clock = Clock.systemUTC(); // Get the system clock as UTC offset
         System.out.println(clock.instant());
         System.out.println(clock.millis());
-
     }
 }
