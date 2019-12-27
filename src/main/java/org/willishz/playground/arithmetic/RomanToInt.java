@@ -1,35 +1,82 @@
 package org.willishz.playground.arithmetic;
 
+import java.util.HashMap;
+import java.util.Map;
+
 /**
- * 回文数
- * https://leetcode-cn.com/problems/palindrome-number/
+ * 罗马数字转整数
+ * https://leetcode-cn.com/problems/roman-to-integer/
  */
 public class RomanToInt {
 
     public static void main(String[] args) {
-        System.out.println(isPalindrome(123454321));
+        System.out.println(romanToInt("MCMXCIV"));
     }
 
-    public static boolean isPalindrome(int x) {
-        // 特殊情况：
-        // 如上所述，当 x < 0 时，x 不是回文数。
-        // 同样地，如果数字的最后一位是 0，为了使该数字为回文，
-        // 则其第一位数字也应该是 0
-        // 只有 0 满足这一属性
-        if (x < 0 || (x % 10 == 0 && x != 0)) {
-            return false;
-        }
+    private static Map<Character, Integer> roman = new HashMap() {{
+        put('I', 1);
+        put('V', 5);
+        put('X', 10);
+        put('L', 50);
+        put('C', 100);
+        put('D', 500);
+        put('M', 1000);
+    }};
 
-        int revertedNumber = 0;
-        while (x > revertedNumber) {
-            revertedNumber = revertedNumber * 10 + x % 10;
-            x /= 10;
+    /**
+     * 如果后一个字符数字比前一个字符数字大，就要用后者减去前者，并且这两个字符代表的是一个数字。只针对这个做处理，数字相减之后数组下标要+1，循环判断
+     *
+     * @param s
+     * @return
+     */
+    public static int romanToInt(String s) {
+        Map<Character, Integer> roman = new HashMap<Character, Integer>();
+        roman.put('I', 1);
+        roman.put('V', 5);
+        roman.put('X', 10);
+        roman.put('L', 50);
+        roman.put('C', 100);
+        roman.put('D', 500);
+        roman.put('M', 1000);
+        char[] c = s.toCharArray();
+        int sum = 0;
+        for (int i = 0; i < c.length; i++) {
+            if (i < c.length - 1 && roman.get(c[i]) < roman.get(c[i + 1])) {
+                int p = roman.get(c[i + 1]) - roman.get(c[i]);
+                sum += p;
+                i++;
+            } else {
+                sum += roman.get(c[i]);
+            }
         }
+        return sum;
+    }
 
-        // 当数字长度为奇数时，我们可以通过 revertedNumber/10 去除处于中位的数字。
-        // 例如，当输入为 12321 时，在 while 循环的末尾我们可以得到 x = 12，revertedNumber = 123，
-        // 由于处于中位的数字不影响回文（它总是与自己相等），所以我们可以简单地将其去除。
-        return x == revertedNumber || x == revertedNumber / 10;
+    /**
+     * 提前减去
+     *
+     * @param s
+     * @return
+     */
+    public static int romanToInt2(String s) {
+        int result = 0;
+        char[] romanChar = s.toCharArray();
+        for (int i = 0; i < romanChar.length; i++) {
+            // 要处理IV IX XL XC CD CM
+            if ((romanChar[i] == 'I' && romanChar[i + 1] == 'V')
+                    || (romanChar[i] == 'I' && romanChar[i + 1] == 'V')) {
+                result -= 1;
+            } else if ((romanChar[i] == 'X' && romanChar[i + 1] == 'L')
+                    || (romanChar[i] == 'X' && romanChar[i + 1] == 'C')) {
+                result -= 10;
+            } else if ((romanChar[i] == 'C' && romanChar[i + 1] == 'D')
+                    || (romanChar[i] == 'C' && romanChar[i + 1] == 'M')) {
+                result -= 100;
+            } else {
+                result += roman.get(romanChar[i]);
+            }
+        }
+        return result;
     }
 
 }
