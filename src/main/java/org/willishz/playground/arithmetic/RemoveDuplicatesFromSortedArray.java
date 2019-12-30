@@ -15,12 +15,37 @@ public class RemoveDuplicatesFromSortedArray {
 
     public static void main(String[] args) {
         int[] nums = new int[]{1, 1, 2, 2, 3, 4, 4, 4, 5, 6, 6, 7, 7, 8, 8, 8, 9, 10, 10};
-        int result = RemoveDuplicatesFromSortedArray.removeDuplicatesFromSortedArray(nums);
+        int result = RemoveDuplicatesFromSortedArray.removeDuplicates(nums);
         System.out.println(result);
         nums = Arrays.copyOfRange(nums, 0, result);
         Arrays.stream(nums).forEach(System.out::println);
     }
 
+    /**
+     * 双指针法
+     * @param nums
+     * @return
+     */
+    public static int removeDuplicates(int[] nums) {
+        if (nums.length == 0) {
+            return 0;
+        }
+        int i = 0;
+        for (int j = 1; j < nums.length; j++) {
+            if (nums[j] != nums[i]) {
+                i++;
+                nums[i] = nums[j];
+            }
+        }
+        return i + 1;
+    }
+
+    /**
+     * 指针一步一挪
+     *
+     * @param nums
+     * @return
+     */
     public static int removeDuplicatesFromSortedArray(int[] nums) {
         int removeFlag = 0;
         for (int i = 1; i < nums.length; i++) {
