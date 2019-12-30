@@ -24,7 +24,7 @@ public class RemoveDuplicatesFromSortedArray {
     public static int removeDuplicatesFromSortedArray(int[] nums) {
         int removeFlag = 0;
         for (int i = 1; i < nums.length; i++) {
-            while (nums[i] == nums[i - 1]) {
+            while (nums[i] == nums[i - 1] && i <= nums.length - removeFlag) {
                 removeFlag++;
                 for (int k = i; k < nums.length - 1; k++) {
                     nums[k] = nums[k + 1];
