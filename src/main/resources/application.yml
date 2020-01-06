@@ -1,3 +1,6 @@
+server:
+    port: 8086
+
 logging:
   config: classpath:logback.xml
 
@@ -7,3 +10,22 @@ taskExecutor:
   keepAliveSeconds: 3000
   queueCapacity: 200
   threadNamePrefix: TASK_EXECUTOR
+
+spring:
+    kafka:
+        bootstrap-servers: server1.willishz.com:9092
+        consumer:
+            auto-commit-interval: 100
+            auto-offset-reset: earliest
+            enable-auto-commit: true
+            group-id: my_log
+            key-serializer: org.apache.kafka.common.serialization.StringSerializer
+            value-serializer: org.apache.kafka.common.serialization.StringSerializer
+        producer:
+            acks: 1
+            batch-size: 16384
+            linger: 1
+            buffer.memory: 33554432
+            key-serializer: org.apache.kafka.common.serialization.StringSerializer
+            value-serializer: org.apache.kafka.common.serialization.StringSerializer
+            retries: 0

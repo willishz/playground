@@ -1,4 +1,4 @@
-package org.willishz.playground.service;
+package org.willishz.playground.grammar.proxy;
 
 /**
  * 汽车接口类

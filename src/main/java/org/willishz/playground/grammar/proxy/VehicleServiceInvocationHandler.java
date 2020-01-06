@@ -1,10 +1,6 @@
-package org.willishz.playground.proxy;
+package org.willishz.playground.grammar.proxy;
 
 import lombok.extern.slf4j.Slf4j;
-import org.junit.Assert;
-import org.junit.Test;
-import org.willishz.playground.service.VehicleService;
-import org.willishz.playground.service.VehicleServiceImpl;
 
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
