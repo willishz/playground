@@ -4,12 +4,25 @@
     <include resource="org/springframework/boot/logging/logback/defaults.xml"/>
     <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
         <encoder>
-            <pattern>[PLAYGROUND][%highlight(%-5p)][%boldMagenta(%date{ISO8601})][%t] %cyan(%logger{100}.%M:%L) %m%n
-            </pattern>
+            <pattern>[PLAYGROUND][%highlight(%-5p)][%boldMagenta(%date{ISO8601})][%t] %cyan(%logger{100}.%M:%L) %m%n</pattern>
+            <charset>UTF-8</charset>
+        </encoder>
+    </appender>
+    <appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>${logDir}/stdout.%d{yyyy-MM-dd_HH}.log</fileNamePattern>
+            <maxHistory>30</maxHistory>
+        </rollingPolicy>
+        <triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
+            <maxFileSize>100MB</maxFileSize>
+        </triggeringPolicy>
+        <encoder>
+            <pattern>[EUREKA][%-5p][%date{ISO8601}][%t] %logger{100}.%M:%L %m%n</pattern>
             <charset>UTF-8</charset>
         </encoder>
     </appender>
     <root level="INFO">
         <appender-ref ref="CONSOLE"></appender-ref>
+        <appender-ref ref="FILE"></appender-ref>
     </root>
 </configuration>

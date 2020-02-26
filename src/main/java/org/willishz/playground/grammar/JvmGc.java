@@ -4,6 +4,8 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.net.URL;
+import java.net.URLClassLoader;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,7 +15,7 @@ import java.util.List;
 public class JvmGc {
 
     public static void main(String[] args) {
-        JvmGc.classLoaderOOM();
+        JvmGc.metaspaceOOM();
     }
 
     /**
@@ -52,10 +54,24 @@ public class JvmGc {
 
     /**
      * OutOfMemoryError: Metaspace
-     * -verbose:gc -Xms20m -Xmx20m -Xmn10m -XX:+PrintGCDetails -XX:SurvivorRatio=8 -XX:MetaspaceSize=1m -XX:MaxMetaspaceSize=1m -XX:+PrintGCDateStamps -XX:+PrintHeapAtGC -XX:+UseConcMarkSweepGC
+     * -verbose:gc -verbose:class -Xms20m -Xmx20m -Xmn10m -XX:+PrintGCDetails -XX:SurvivorRatio=8 -XX:MetaspaceSize=1m -XX:MaxMetaspaceSize=1m -XX:+PrintGCDateStamps -XX:+PrintHeapAtGC -XX:+UseConcMarkSweepGC
      */
     private static void metaspaceOOM() {
-        // do nothing
+        URL url = null;
+        List<ClassLoader> classLoaderList = new ArrayList<ClassLoader>();
+        try {
+            url = new File("/tmp").toURI().toURL();
+            URL[] urls = {url};
+            int i = 1;
+            while (true) {
+                System.out.println(i++);
+                ClassLoader loader = new URLClassLoader(urls);
+                classLoaderList.add(loader);
+                loader.loadClass("org.willishz.playground.grammar.JvmGc");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     /**
