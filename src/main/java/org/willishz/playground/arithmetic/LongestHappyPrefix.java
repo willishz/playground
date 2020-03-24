@@ -1,35 +1,64 @@
 package org.willishz.playground.arithmetic;
 
 /**
- * 回文数
- * https://leetcode-cn.com/problems/palindrome-number/
+ * 「快乐前缀」是在原字符串中既是 非空 前缀也是后缀（不包括原字符串自身）的字符串。
+ * <p>
+ * 给你一个字符串 s，请你返回它的 最长快乐前缀。
+ * <p>
+ * 如果不存在满足题意的前缀，则返回一个空字符串。
+ * <p>
+ * 来源：力扣（LeetCode）
+ * 链接：https://leetcode-cn.com/problems/longest-happy-prefix
  */
-public class Palindrome {
+public class LongestHappyPrefix {
 
     public static void main(String[] args) {
-        System.out.println(isPalindrome(123454321));
+        System.out.println(longestPrefix("leetcodeleet"));
+        System.out.println(longestPrefix("level"));
+        System.out.println(longestPrefix("ababab"));
+        System.out.println(longestPrefix("a"));
+        System.out.println(longestPrefix("aaaaa"));
     }
 
-    public static boolean isPalindrome(int x) {
-        // 特殊情况：
-        // 如上所述，当 x < 0 时，x 不是回文数。
-        // 同样地，如果数字的最后一位是 0，为了使该数字为回文，
-        // 则其第一位数字也应该是 0
-        // 只有 0 满足这一属性
-        if (x < 0 || (x % 10 == 0 && x != 0)) {
-            return false;
+    /**
+     * 暴力法 超出时间限制
+     *
+     * @param s
+     * @return
+     */
+    public static String longestHappyPrefix(String s) {
+        String result = "";
+        for (int i = 1; i < s.length(); i++) {
+            if (s == null || i >= s.length() - 1) {
+                return result;
+            }
+            if (s.substring(0, i).equals(s.substring(s.length() - i, s.length()))) {
+                result = s.substring(0, i);
+            }
         }
-
-        int revertedNumber = 0;
-        while (x > revertedNumber) {
-            revertedNumber = revertedNumber * 10 + x % 10;
-            x /= 10;
-        }
-
-        // 当数字长度为奇数时，我们可以通过 revertedNumber/10 去除处于中位的数字。
-        // 例如，当输入为 12321 时，在 while 循环的末尾我们可以得到 x = 12，revertedNumber = 123，
-        // 由于处于中位的数字不影响回文（它总是与自己相等），所以我们可以简单地将其去除。
-        return x == revertedNumber || x == revertedNumber / 10;
+        return result;
     }
 
+    public static String longestPrefix(String s) {
+        int[] next = getNext(s);
+        int n = next[s.length()];
+        return s.substring(0, n);
+    }
+
+    private static int[] getNext(String s) {
+        int[] next = new int[s.length() + 1];
+        int i = 0, j = -1;
+        next[0] = -1;
+        while (i < s.length()) {
+            if (j == -1 || s.charAt(j) == s.charAt(i)) {
+                // 已有 [0, ..., j - 1] 与 [i - j, ..., i - 1] 匹配, 同时 s[j] == s[i]
+                next[++i] = ++j;
+                // 匹配长度增加 1, 查看下一个匹配位置
+            } else {
+                j = next[j];
+                // 不匹配, 说明当前查看的前缀太长, 将 j 跳回到上一个可能的匹配位置
+            }
+        }
+        return next;
+    }
 }

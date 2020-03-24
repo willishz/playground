@@ -1,7 +1,25 @@
 package org.willishz.playground.async;
 
 /**
- * Created by luzongwei on 2020/3/3.
+ *
  */
 public class VolatileTest {
+    private static boolean ready;
+    private static int number;
+
+    private static class ReaderThread extends Thread {
+        @Override
+        public void run() {
+            while (!ready) {
+                Thread.yield();
+            }
+            System.out.println(number);
+        }
+    }
+
+    public static void main(String[] args) {
+        new ReaderThread().start();
+        number = 42;
+        ready = true;
+    }
 }
