@@ -11,6 +11,7 @@ import java.util.*;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.ThreadLocalRandom;
 import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
 /**
@@ -87,6 +88,22 @@ public class LambdaTest {
         }
         return result;
     }
+
+    /**
+     * Java8简洁的for循环
+     * 不同于 for，range 不会强迫我们初始化某个可变变量。
+     * 迭代会自动执行，所以我们不需要像循环索引一样定义增量。
+     */
+    public static void loopInLambda() {
+        IntStream.range(0, 5).forEach(i -> {
+            System.out.print(i);
+            System.out.println();
+        });
+        IntStream.rangeClosed(100, 105).forEach(i -> {
+            System.out.print(i);
+            System.out.println();
+        });
+    }
 }
 
 interface IUserPredicate {
@@ -97,3 +114,4 @@ interface IUserPredicate {
 interface GreetingService {
     void sayMessage(String message);
 }
+
