@@ -1,4 +1,4 @@
-package org.willishz.playground.arithmetic;
+package org.willishz.playground.algorithm;
 
 import java.util.HashMap;
 import java.util.Map;

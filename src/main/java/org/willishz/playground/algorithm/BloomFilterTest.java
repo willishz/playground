@@ -1,4 +1,4 @@
-package org.willishz.playground.arithmetic;
+package org.willishz.playground.algorithm;
 
 import com.google.common.hash.BloomFilter;
 import com.google.common.hash.Funnels;

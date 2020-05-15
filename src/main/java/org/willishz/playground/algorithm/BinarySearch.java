@@ -1,4 +1,4 @@
-package org.willishz.playground.arithmetic;
+package org.willishz.playground.algorithm;
 
 /**
  * 二分法查找

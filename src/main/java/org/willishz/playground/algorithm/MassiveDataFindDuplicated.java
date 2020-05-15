@@ -1,4 +1,4 @@
-package org.willishz.playground.arithmetic;
+package org.willishz.playground.algorithm;
 
 /**
  * 有1亿个数字，其中有2个是重复的，快速找到它，时间和空间要最优
