@@ -26,11 +26,11 @@ interface Vehicle {
     void run();
 
     default void alarm() {
-        System.out.println("alarm");
+        System.out.println("Vehicle alarm");
     }
 
     static void light() {
-        System.out.println("light");
+        System.out.println("Vehicle light");
     }
 }
 
