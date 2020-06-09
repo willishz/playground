@@ -3,28 +3,26 @@ package org.willishz.playground.algorithm;
 import org.willishz.playground.util.JacksonUtil;
 
 /**
- * 反转字符串,空间复杂度O(1)
- * https://leetcode-cn.com/problems/reverse-string/
+ * 二叉树最大深度
+ * https://leetcode-cn.com/problems/maximum-depth-of-binary-tree/
  */
-public class ReverseString {
+public class MaxDepthBinaryTree {
 
     public static void main(String[] args) {
-        char[] s = new char[]{'a', 'b', 'c', 'd', 'e', 'f'};
-        ReverseString.reverseString(s);
+        TreeNode root = new TreeNode(3, new TreeNode(9, null, null), new TreeNode(20, new TreeNode(15), new TreeNode(7)));
+        MaxDepthBinaryTree.maxDepth(root);
         System.out.println(JacksonUtil.bean2Json(s));
     }
 
     /**
-     * 双指针
+     * 递归
      *
      * @param s
      * @return
      */
-    public static void reverseString(char[] s) {
-        for (int i = 0; i < s.length / 2; i++) {
-            char tmp = s[i];
-            s[i] = s[s.length - i - 1];
-            s[s.length - i - 1] = tmp;
+    public static void maxDepth(TreeNode node) {
+        if () {
+
         }
     }
 }
