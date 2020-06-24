@@ -38,7 +38,7 @@ import org.springframework.util.backoff.FixedBackOff;
  * [PLAYGROUND][ERROR][2020-01-06 10:53:36,573][restartedMain] org.springframework.kafka.core.KafkaAdmin.error:149 Could not configure topics
 org.springframework.kafka.KafkaException: Timed out waiting to get existing topics; nested exception is java.util.concurrent.TimeoutException
  */
-@SpringBootApplication
+//@SpringBootApplication
 @Slf4j
 public class KafkaApplication {
 
